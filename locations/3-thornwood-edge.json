@@ -1,0 +1,16 @@
+{
+  "id": "thornwood-edge",
+  "name": "Thornwood Edge",
+  "type": "Forest outskirts",
+  "opening": "The road ends at a signpost. Both arrows point into the dark trees, and both have been scratched out. Between the pines, small lights blink on and off, as if something is watching you.",
+  "picture": "a misty forest edge at twilight, a crossed-out wooden signpost, glowing lights between dark pines",
+  "beats": [
+    "Find a safe path into the forest",
+    "Discover what the lights between the trees are",
+    "Help the wounded wolf that guards the old grove"
+  ],
+  "suits": ["Ranger", "Sorcerer"],
+  "style": "misty teal, fireflies, deep pine shadows",
+  "loot": ["glowing acorn", "wolf-fang charm", "map of hidden paths"],
+  "secret": "The lights are lost spirits, and the wolf is protecting them from a hungry witch."
+}

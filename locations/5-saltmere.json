@@ -1,0 +1,16 @@
+{
+  "id": "saltmere",
+  "name": "Saltmere",
+  "type": "Harbour town",
+  "opening": "A ship drifted into Saltmere Harbour last night with no one aboard. The captain's dinner is still warm on the table, and something is knocking from inside the hold.",
+  "picture": "a misty harbour at dusk, an empty ship with torn sails tied up at the lantern-lit docks",
+  "beats": [
+    "Get aboard the empty ship without being seen",
+    "Find out what is knocking in the hold",
+    "Learn what happened to the crew"
+  ],
+  "suits": ["Rogue", "Bard"],
+  "style": "sea mist, lantern light, deep blues",
+  "loot": ["captain's compass", "message in a bottle", "black pearl"],
+  "secret": "The crew were turned into seagulls by a sea witch they tried to cheat."
+}

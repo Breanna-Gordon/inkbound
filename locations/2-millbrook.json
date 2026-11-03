@@ -1,0 +1,16 @@
+{
+  "id": "millbrook",
+  "name": "Millbrook",
+  "type": "Small village",
+  "opening": "Millbrook's windmill stands still for the first time in a hundred years. The miller has been missing for three days, and something has left huge, wet footprints through the wheat.",
+  "picture": "a quiet farming village at sunrise, a stopped windmill, giant footprints through golden wheat",
+  "beats": [
+    "Follow the strange tracks through the wheat fields",
+    "Search the silent windmill",
+    "Find the missing miller"
+  ],
+  "suits": ["Cleric", "Fighter"],
+  "style": "morning watercolour, soft greens and gold",
+  "loot": ["fresh honey bread", "the miller's lucky horseshoe", "jar of honey"],
+  "secret": "A lonely river troll took the miller to fix its broken water wheel."
+}

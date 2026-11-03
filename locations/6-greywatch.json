@@ -1,0 +1,16 @@
+{
+  "id": "greywatch",
+  "name": "Greywatch",
+  "type": "Ruined watchtower",
+  "opening": "The signal fire on Greywatch Tower is burning again, green this time, though no one has kept watch here for a hundred years. Crows circle the broken battlements, calling your name.",
+  "picture": "a ruined stone watchtower on a stormy hill, green fire burning at the top, crows circling",
+  "beats": [
+    "Climb the crumbling tower",
+    "Find out who lit the green fire",
+    "Help the old knight finish his oath"
+  ],
+  "suits": ["Fighter", "Cleric"],
+  "style": "storm grey, eerie green firelight",
+  "loot": ["rusted knight's badge", "green-fire torch", "old oath scroll"],
+  "secret": "The ghost of the last knight lit the fire because he never finished his final watch."
+}

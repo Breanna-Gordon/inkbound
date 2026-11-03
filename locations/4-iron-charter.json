@@ -1,0 +1,16 @@
+{
+  "id": "iron-charter",
+  "name": "The Iron Charter",
+  "type": "Adventurers' guild",
+  "opening": "The Iron Charter guild hall smells of polish and old maps. The guildmaster taps a notice on the quest board: DANGEROUS, NO NEWCOMERS. Then she looks you up and down, and smiles.",
+  "picture": "a grand stone guild hall with red banners, a quest board covered in notices, torches glowing",
+  "beats": [
+    "Prove yourself to the guildmaster",
+    "Beat a rival adventuring party to the dangerous quest",
+    "Complete the quest no newcomer is allowed to take"
+  ],
+  "suits": ["Fighter", "Cleric"],
+  "style": "bright banners, stone halls, torchlight",
+  "loot": ["guild badge", "the rivals' map", "enchanted whetstone"],
+  "secret": "The dangerous quest was posted by the guildmaster's missing brother, as a cry for help."
+}
