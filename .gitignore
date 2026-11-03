@@ -1,0 +1,14 @@
+# Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Inkbound: AI models and generated media are too big for git
+*.safetensors
+*.ckpt
+media/
+
+# System clutter
+.DS_Store
+Thumbs.db
