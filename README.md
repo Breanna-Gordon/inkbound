@@ -1,6 +1,9 @@
 # inkbound
 
 git add .
-git commit -m "now play test working but issue recognsing what i draw"
+git commit -m "..."
 git push
 git push uni main
+
+
+streamlit run app.py 
