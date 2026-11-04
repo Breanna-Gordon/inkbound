@@ -165,7 +165,7 @@ def screen_class():
 def start_location(loc):
     hero = st.session_state.hero
     with st.spinner(f"Painting {loc['name']}..."):
-        picture = art.paint(f"{loc['picture']}, {hero['look']}", f"{loc['style']}, {hero['style']}")
+        picture = art.paint(loc["picture"], f"{hero['look']}, {loc['style']}")
     st.session_state.update(
         location=loc, goal_index=0, goal_wins=0, turn_no=0, guesses=None, last=None,
         pages=[{"picture": picture, "story": loc["opening"], "result": "The tale begins."}],
@@ -203,17 +203,30 @@ def strokes_only(image_data):
     return ImageOps.invert(alpha).convert("RGB")
 
 
-def play_turn(drawing):
+def play_turn(label=None, typed=""):
+    """One turn. label = what the Oracle saw in the drawing (or None);
+    typed = what the player wrote (or empty). Either or both can be given."""
     s = st.session_state
     hero, loc = s.hero, s.location
     goal = loc["beats"][s.goal_index]
-    outcome = rules.resolve(hero, drawing, rules.pick_difficulty(s.goal_index),
+    if typed and label:
+        action = f'drew a {label} and said: "{typed}"'
+    elif typed:
+        action = f'said: "{typed}"'
+    else:
+        action = f"drew a {label}"
+    stat = on_class = None
+    if typed or label not in rules.CHECKS:  # free text: let the DM pick the stat
+        with st.spinner("The Dungeon Master considers your move..."):
+            stat, on_class = dm.choose_stat(action, hero)
+    outcome = rules.resolve(hero, label or typed, rules.pick_difficulty(s.goal_index),
                             advantage=s.home_advantage, use_power=s.get("use_power", False),
-                            loot=loc["loot"])
+                            loot=loc["loot"], stat=stat, on_class=on_class)
+    outcome["action"] = action
     s.home_advantage = False  # the home advantage is only for the first roll
     with st.spinner("The page is turning..."):
         story, picture_text = dm.narrate(hero, loc, goal, s.history, outcome)
-        picture = art.paint(f"{picture_text}, {hero['look']}", f"{loc['style']}, {hero['style']}")
+        picture = art.paint(picture_text, f"{hero['look']}, {loc['style']}")
     s.pages.append({"picture": picture, "story": story, "result": rules.describe(outcome)})
     s.history.append(story)
     s.update(scene=story, picture=picture, last=outcome, guesses=None, turn_no=s.turn_no + 1)
@@ -242,17 +255,27 @@ def screen_play():
         canvas = st_canvas(stroke_width=5, stroke_color="#ffe9a8", background_color="rgba(0,0,0,0)",
                            background_image=background, height=H, width=W,
                            key=f"draw-{s.turn_no}", return_image_data=True)
+        typed = st.text_input("Draw on the scene, describe your move, or both",
+                              placeholder="e.g. I swing across on the rope and grab the map",
+                              key=f"typed-{s.turn_no}").strip()
         if not hero["power_used"]:
-            st.checkbox(f"Use {c['power'][0]} (once per tale: this drawing succeeds automatically)",
+            st.checkbox(f"Use {c['power'][0]} (once per tale: this move succeeds automatically)",
                         key="use_power")
-        if st.button("Cast your drawing", type="primary"):
-            if canvas.image_data is None or canvas.image_data[:, :, 3].max() == 0:
-                st.warning("Draw something on the scene first!")
+        if st.button("Make your move", type="primary"):
+            drew = canvas.image_data is not None and canvas.image_data[:, :, 3].max() > 0
+            if not drew and not typed:
+                st.warning("Draw on the scene or describe what you do first!")
+            elif not drew:
+                play_turn(typed=typed)
+                st.rerun()
             else:
                 s.last_sketch = strokes_only(canvas.image_data)
                 with st.spinner("The Oracle reads your drawing..."):
                     guesses = sketch.recognise(s.last_sketch, rules.ACTION_ITEMS)
-                if guesses[0][1] >= CONFIDENT:
+                if typed:  # the words explain the drawing, so no need to ask
+                    play_turn(guesses[0][0] if guesses[0][1] >= CONFIDENT else None, typed)
+                    st.rerun()
+                elif guesses[0][1] >= CONFIDENT:
                     play_turn(guesses[0][0])
                     st.rerun()
                 else:
@@ -263,11 +286,12 @@ def screen_play():
             options = [f"{label} ({pct}%)" for label, pct in s.guesses] + [other]
             st.write("The Oracle isn't sure. What did you draw?")
             choice = st.radio("Pick one", options, label_visibility="collapsed")
-            typed = st.text_input("Type what you drew", placeholder="e.g. a grappling hook") if choice == other else ""
+            typed = st.text_input("Type what you drew", placeholder="e.g. a grappling hook",
+                                  key=f"other-{s.turn_no}") if choice == other else ""
             if st.button("That's it"):
                 drawing = typed.strip().lower() if choice == other else s.guesses[options.index(choice)][0]
                 if drawing:
-                    play_turn(drawing)
+                    play_turn(label=drawing)
                     st.rerun()
 
         if "last_sketch" in s:
@@ -288,7 +312,7 @@ def screen_play():
             ({s.goal_wins}/{WINS_PER_GOAL})</p>
         </div>""", unsafe_allow_html=True)
         if s.last:
-            st.caption(f"You drew: {s.last['drawing']} · {rules.describe(s.last)}")
+            st.caption(f"You {s.last['action']} · {rules.describe(s.last)}")
         page(s.scene, "THE DUNGEON MASTER")
 
     with st.expander(f"Your storybook so far ({len(s.pages)} pages)"):

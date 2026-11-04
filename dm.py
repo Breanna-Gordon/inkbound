@@ -26,7 +26,7 @@ Hidden secret of this place (reveal it slowly, a clue at a time): {location['sec
 Story so far:
 {so_far}
 
-This turn the hero drew: {outcome['drawing']}.
+This turn the hero {outcome['action']}.
 Dice result (already decided, you must follow it): {rules.describe(outcome)}
 
 Write what happens next:
@@ -39,7 +39,7 @@ Write what happens next:
 
 Reply in JSON with exactly two keys:
 "story": the text.
-"picture": under 15 words for an illustrator, describing only what can be seen now (the place, the hero, the action, the light)."""
+"picture": under 15 words for an illustrator: ONE clear moment from this turn. Start with the main action or creature, then the place. Use concrete things that can be painted (no feelings, no names, at most two characters)."""
     reply = ollama.chat(
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
@@ -52,6 +52,33 @@ Reply in JSON with exactly two keys:
         return str(data["story"]), str(data["picture"])
     except (json.JSONDecodeError, KeyError, TypeError):
         return text, location["picture"]  # backup if the LLM breaks the format
+
+
+def choose_stat(action, hero):
+    """For a typed action: which stat does it test, and does it suit the class?
+
+    Returns (stat, suits_class). Falls back to simple word matching if the LLM
+    gives an odd answer.
+    """
+    prompt = f"""A {hero['class']} in a fairy-tale adventure tries this: {action}
+Which ability does it test most?
+STR = force. DEX = agility, aim, sneaking, climbing. CON = endurance, toughness.
+INT = knowledge, building, puzzles. WIS = noticing, nature, healing. CHA = talking, music, magic, persuading.
+Does it play to a {hero['class']}'s strengths?
+Reply in JSON like {{"stat": "DEX", "suits_class": true}}"""
+    try:
+        reply = ollama.chat(model=MODEL, messages=[{"role": "user", "content": prompt}],
+                            format="json", options={"temperature": 0})
+        data = json.loads(reply["message"]["content"])
+        stat = str(data["stat"]).upper()[:3]
+        if stat in rules.STAT_NAMES:
+            return stat, bool(data.get("suits_class", False))
+    except (json.JSONDecodeError, KeyError, TypeError):
+        pass
+    for word, stat in rules.CHECKS.items():  # backup: look for a known word
+        if word in action.lower():
+            return stat, False
+    return "WIS", False
 
 
 if __name__ == "__main__":

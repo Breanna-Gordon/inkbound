@@ -184,14 +184,17 @@ def pick_difficulty(beat):
     return random.choice([8, 10, 12]) + beat
 
 
-def resolve(hero, drawing, difficulty, advantage=False, use_power=False, loot=None):
+def resolve(hero, drawing, difficulty, advantage=False, use_power=False, loot=None,
+            stat=None, on_class=None):
     """Roll the dice for one turn and apply the result to the hero.
 
+    For a drawing, the stat and class fit come from CHECKS and the class's
+    affinity list. For a typed action, the DM chooses them and passes them in.
     Returns a dict describing what happened, for the screen and the DM.
     """
     c = CLASSES[hero["class"]]
-    stat = CHECKS.get(drawing, "WIS")
-    on_class = drawing in c["affinity"]
+    stat = stat or CHECKS.get(drawing, "WIS")
+    on_class = (drawing in c["affinity"]) if on_class is None else on_class
     adv = advantage or on_class
     rolls = [random.randint(1, 20)] + ([random.randint(1, 20)] if adv else [])
     roll = max(rolls)  # advantage: roll twice, keep the higher
@@ -230,7 +233,7 @@ def resolve(hero, drawing, difficulty, advantage=False, use_power=False, loot=No
         hero["pack"].append(item)
 
     return {
-        "drawing": drawing, "stat": stat, "rolls": rolls, "roll": roll, "bonus": bonus,
+        "drawing": drawing, "action": f"drew a {drawing}", "stat": stat, "rolls": rolls, "roll": roll, "bonus": bonus,
         "total": total, "difficulty": difficulty, "tier": tier, "damage": damage,
         "item": item, "advantage": adv, "power": use_power, "success": tier in TIERS_SUCCESS,
     }
