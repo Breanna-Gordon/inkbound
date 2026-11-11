@@ -2,15 +2,27 @@
   "id": "greywatch",
   "name": "Greywatch",
   "type": "Ruined watchtower",
-  "opening": "The signal fire on Greywatch Tower is burning again, green this time, though no one has kept watch here for a hundred years. Crows circle the broken battlements, calling your name.",
-  "picture": "a ruined stone watchtower on a stormy hill, green fire burning at the top, crows circling",
+  "opening": "Green fire burns on top of Greywatch Tower for the first time in a hundred years. As you reach the broken gate, a pale knight in rusted armour drifts out of the stones, glowing faintly green. 'At last,' he whispers. 'My relief has come.'",
+  "picture": "medium shot, (a translucent glowing green ghost knight in rusted armour drifting out of a broken tower gate towards the hero:1.25), (ruined stone watchtower with green fire on top:1.1), stormy sky",
+  "background": "a ruined stone watchtower with a broken gate on a stormy hill, green fire burning at the top",
   "beats": [
     "Climb the crumbling tower",
     "Find out who lit the green fire",
     "Help the old knight finish his oath"
   ],
-  "suits": ["Fighter", "Cleric"],
+  "suits": [
+    "Paladin",
+    "Cleric",
+    "Wizard"
+  ],
   "style": "storm grey, eerie green firelight",
-  "loot": ["rusted knight's badge", "green-fire torch", "old oath scroll"],
-  "secret": "The ghost of the last knight lit the fire because he never finished his final watch."
+  "loot": [
+    "rusted knight's badge",
+    "green-fire torch",
+    "old oath scroll"
+  ],
+  "secret": "The knight cannot rest until someone finishes his last watch, because something is coming up the valley.",
+  "cast": {
+    "the ghost knight": "a translucent, softly glowing green ghost of an old knight in rusted armour"
+  }
 }

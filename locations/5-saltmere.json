@@ -2,15 +2,27 @@
   "id": "saltmere",
   "name": "Saltmere",
   "type": "Harbour town",
-  "opening": "A ship drifted into Saltmere Harbour last night with no one aboard. The captain's dinner is still warm on the table, and something is knocking from inside the hold.",
-  "picture": "a misty harbour at dusk, an empty ship with torn sails tied up at the lantern-lit docks",
+  "opening": "A ship drifted into Saltmere harbour last night with no one aboard. The old harbour master holds his lantern up to its torn sails. 'Captain's dinner is still warm on the table,' he mutters. Then, from inside the hold, something knocks three times.",
+  "picture": "medium shot, (an old white-bearded harbour master in an oilskin coat holding up a lantern beside an empty ship with torn sails, the hero next to him:1.25), (foggy harbour dock at dusk:1.1), lantern glow",
+  "background": "a misty harbour at night with wooden docks, lanterns and an empty ship with torn sails",
   "beats": [
     "Get aboard the empty ship without being seen",
     "Find out what is knocking in the hold",
     "Learn what happened to the crew"
   ],
-  "suits": ["Rogue", "Bard"],
+  "suits": [
+    "Rogue",
+    "Bard",
+    "Warlock"
+  ],
   "style": "sea mist, lantern light, deep blues",
-  "loot": ["captain's compass", "message in a bottle", "black pearl"],
-  "secret": "The crew were turned into seagulls by a sea witch they tried to cheat."
+  "loot": [
+    "captain's compass",
+    "message in a bottle",
+    "black pearl"
+  ],
+  "secret": "The crew were turned into seagulls by a sea witch they tried to cheat.",
+  "cast": {
+    "the harbour master": "an old man with a white beard, a yellow oilskin coat and a brass lantern"
+  }
 }

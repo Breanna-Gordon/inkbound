@@ -2,15 +2,28 @@
   "id": "thornwood-edge",
   "name": "Thornwood Edge",
   "type": "Forest outskirts",
-  "opening": "The road ends at a signpost. Both arrows point into the dark trees, and both have been scratched out. Between the pines, small lights blink on and off, as if something is watching you.",
-  "picture": "a misty forest edge at twilight, a crossed-out wooden signpost, glowing lights between dark pines",
+  "opening": "The road ends at a signpost with both arrows scratched out. Between the dark pines, a ring of tiny glowing lights drifts towards you, and behind them a great grey wolf limps into view, one paw held off the ground. It growls, but it doesn't run.",
+  "picture": "medium shot, (a great grey wolf with a hurt paw limping out of dark pine trees towards the hero, tiny glowing wisps floating around it:1.25), (scratched-out wooden signpost at a forest edge:1.1), misty twilight",
+  "background": "the edge of a dark pine forest, a crossroads signpost with scratched-out arrows, a mossy path",
   "beats": [
     "Find a safe path into the forest",
     "Discover what the lights between the trees are",
     "Help the wounded wolf that guards the old grove"
   ],
-  "suits": ["Ranger", "Sorcerer"],
+  "suits": [
+    "Ranger",
+    "Druid",
+    "Sorcerer"
+  ],
   "style": "misty teal, fireflies, deep pine shadows",
-  "loot": ["glowing acorn", "wolf-fang charm", "map of hidden paths"],
-  "secret": "The lights are lost spirits, and the wolf is protecting them from a hungry witch."
+  "loot": [
+    "glowing acorn",
+    "wolf-fang charm",
+    "map of hidden paths"
+  ],
+  "secret": "The lights are lost spirits, and the wolf is protecting them from a hungry witch.",
+  "cast": {
+    "the grey wolf": "a great grey wolf with a silver-streaked muzzle and a hurt front paw",
+    "the wisps": "tiny floating balls of soft blue-white light"
+  }
 }

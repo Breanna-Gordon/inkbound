@@ -2,15 +2,27 @@
   "id": "millbrook",
   "name": "Millbrook",
   "type": "Small village",
-  "opening": "Millbrook's windmill stands still for the first time in a hundred years. The miller has been missing for three days, and something has left huge, wet footprints through the wheat.",
-  "picture": "a quiet farming village at sunrise, a stopped windmill, giant footprints through golden wheat",
+  "opening": "Millbrook's windmill stands silent for the first time in a hundred years. A freckled girl in a flour-dusted apron runs up to you and points at huge, wet footprints pressed into the wheat. 'Papa went to check the wheel three days ago,' she says. 'He never came back.'",
+  "picture": "medium shot, (a freckled girl in a flour-dusted apron pointing at huge wet footprints in a golden wheat field, talking to the hero:1.25), (still windmill on a hill behind:1.1), morning light",
+  "background": "a golden wheat field beside a still wooden windmill and a little thatched village",
   "beats": [
     "Follow the strange tracks through the wheat fields",
     "Search the silent windmill",
     "Find the missing miller"
   ],
-  "suits": ["Cleric", "Fighter"],
+  "suits": [
+    "Cleric",
+    "Fighter",
+    "Druid"
+  ],
   "style": "morning watercolour, soft greens and gold",
-  "loot": ["fresh honey bread", "the miller's lucky horseshoe", "jar of honey"],
-  "secret": "A lonely river troll took the miller to fix its broken water wheel."
+  "loot": [
+    "fresh honey bread",
+    "the miller's lucky horseshoe",
+    "jar of honey"
+  ],
+  "secret": "A lonely river troll took the miller to fix its broken water wheel.",
+  "cast": {
+    "Pip, the miller's daughter": "a freckled girl with two braids and a flour-dusted apron"
+  }
 }

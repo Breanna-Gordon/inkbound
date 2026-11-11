@@ -2,15 +2,27 @@
   "id": "frostfang-pass",
   "name": "Frostfang Pass",
   "type": "Mountain pass",
-  "opening": "An avalanche roars down behind you and seals the road home. Ahead, the mountain pass is silent, except for a thin line of smoke curling out of a cave.",
-  "picture": "a snowy mountain pass at pink dawn, a narrow trail leading to a cave with smoke curling out",
+  "opening": "An avalanche roars down and seals the road behind you. Ahead, a thick plume of smoke pours from a cave mouth in the cliff, and the snow leading to it is full of clawed footprints far too big to be human. From inside the cave comes a loud sneeze, and a puff of warm smoke rolls out.",
+  "picture": "medium shot, (the hero standing at the dark mouth of a cave in a snowy cliff, a thick plume of smoke pouring out, huge clawed footprints in the snow:1.25), (snowy mountain pass:1.1), pink dawn light",
+  "background": "a snowy mountain pass with the dark mouth of a cave in a cliff and smoke drifting out",
   "beats": [
     "Survive the cold and reach the cave",
     "Meet whoever lives in the smoking cave",
     "Find another way down the mountain"
   ],
-  "suits": ["Ranger", "Fighter"],
+  "suits": [
+    "Barbarian",
+    "Ranger",
+    "Monk"
+  ],
   "style": "icy white snow, cold dawn pink",
-  "loot": ["fur cloak", "flint and steel", "shimmering dragon scale"],
-  "secret": "A young dragon lives in the cave, and it is more scared of you than you are of it."
+  "loot": [
+    "fur cloak",
+    "flint and steel",
+    "shimmering dragon scale"
+  ],
+  "secret": "A young dragon lives in the cave, and it is more scared of you than you are of it.",
+  "cast": {
+    "the young dragon": "a small frost-blue dragon with big golden eyes and stubby wings"
+  }
 }

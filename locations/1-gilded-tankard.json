@@ -2,15 +2,28 @@
   "id": "gilded-tankard",
   "name": "The Gilded Tankard",
   "type": "Adventurers' tavern",
-  "opening": "The Gilded Tankard is loud with songs and spilled ale. A hooded stranger slides a crumpled map across your table and whispers, 'You're the one they sing about.' Then she is gone, and two guards shove through the door, looking for her.",
-  "picture": "a cosy candlelit tavern full of adventurers, a hooded stranger slipping away through the crowd",
+  "opening": "The Gilded Tankard roars with song. A young woman in a patched green hood drops into the seat across from you and slides a crumpled map over the table. 'You're the one they sing about,' she whispers. 'Keep this safe.' Behind her, the door bangs open and two guards in red tabards start searching the room.",
+  "picture": "medium shot, (a young woman in a patched green hood sliding a crumpled map across a tavern table towards the hero, two guards in red tabards bursting through the door behind her:1.25), (crowded candlelit tavern:1.1)",
+  "background": "a cosy candlelit tavern with long wooden tables, ale barrels, a big stone fireplace and timber beams",
   "beats": [
     "Get away from the guards with the map",
     "Follow the map's first clue through the night-time streets",
     "Find out who the hooded stranger is running from"
   ],
-  "suits": ["Bard", "Rogue"],
+  "suits": [
+    "Bard",
+    "Rogue",
+    "Warlock"
+  ],
   "style": "warm candlelight, timber beams, amber glow",
-  "loot": ["silver whistle", "the stranger's ring", "bottle of fire-wine"],
-  "secret": "The map leads to a stolen crown, and the hooded stranger is the true heir."
+  "loot": [
+    "silver whistle",
+    "the stranger's ring",
+    "bottle of fire-wine"
+  ],
+  "secret": "The map leads to a stolen crown, and the hooded stranger is the true heir.",
+  "cast": {
+    "the hooded stranger": "a young woman in a patched green hooded cloak with a silver ring",
+    "the guards": "two burly tavern guards in red tabards carrying halberds"
+  }
 }
