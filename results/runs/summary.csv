@@ -1,0 +1,2 @@
+run,date,per_class,epochs,batch,best_val_acc,best_val_top3,minutes,note
+1-baseline,2026-11-04 23:25,3000,10,256,66.6,83.6,75,"first run: default settings (minutes include downloading the data)"
