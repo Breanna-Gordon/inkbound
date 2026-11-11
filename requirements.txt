@@ -6,3 +6,5 @@ streamlit-drawable-canvas
 ollama
 requests
 pillow
+numpy
+matplotlib
