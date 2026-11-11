@@ -12,3 +12,9 @@ media/
 # System clutter
 .DS_Store
 Thumbs.db
+# Training data and large results (re-created by train_classifier.py)
+data/quickdraw/
+results/test_set.npz
+
+# Recordings of my voice from playing (used by evaluate_voice.py, kept private)
+data/voice/
