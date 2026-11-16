@@ -1,2 +1,3 @@
 run,date,per_class,epochs,batch,best_val_acc,best_val_top3,minutes,note
 1-baseline,2026-11-04 23:25,3000,10,256,66.6,83.6,75,"first run: default settings (minutes include downloading the data)"
+2-more-epochs,2026-11-11 21:06,3000,20,256,67.9,84.5,165,20 epochs: was accuracy still rising?
