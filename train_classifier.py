@@ -200,7 +200,8 @@ def main():
     x_val, y_val = x[n_test:n_test + n_val], y[n_test:n_test + n_val]
     x_train, y_train = x[n_test + n_val:], y[n_test + n_val:]
     RESULTS.mkdir(exist_ok=True)
-    np.savez_compressed(RESULTS / "test_set.npz", x=x_test, y=y_test, labels=np.array(labels))
+    # Each run keeps its own test set: drawings this run's model never trained on.
+    np.savez_compressed(run_dir / "test_set.npz", x=x_test, y=y_test, labels=np.array(labels))
     print(f"Train {len(x_train)}, validation {len(x_val)}, test {len(x_test)}")
 
     dev = oracle_cnn.device()
@@ -253,6 +254,8 @@ def main():
     if best > previous:
         oracle_cnn.MODEL_PATH.parent.mkdir(exist_ok=True)
         shutil.copy(run_dir / "sketch_cnn.pt", oracle_cnn.MODEL_PATH)
+        # The model and its test set always move together, so evaluate.py tests on unseen drawings.
+        shutil.copy(run_dir / "test_set.npz", RESULTS / "test_set.npz")
         print(f"This is the best run so far, so the game now uses it ({oracle_cnn.MODEL_PATH.as_posix()}).")
     else:
         print(f"An earlier run was better, so the game keeps using it. This run's model is in {run_dir.as_posix()}.")
